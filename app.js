@@ -1,26 +1,34 @@
 
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
   import {
    getAuth,
+   onAuthStateChanged,
    createUserWithEmailAndPassword,
    signInWithEmailAndPassword,
-  } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-//   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
- 
+  } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+  import { firebaseConfig } from "./config.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-  // -------------
-  };
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 
 //   const analytics = getAnalytics(app);
   const auth = getAuth(app);
+
+  // Check if the user is logged in
+onAuthStateChanged(auth, (user) => {
+  const isLoginPage = window.location.pathname.includes('login.html');
+
+  // If no user is authenticated and we are not on the login page, redirect to login page
+  if (!user && !isLoginPage) {
+    console.log("No user authenticated. Redirecting to login...");
+    window.location.href = "login.html";
+  } else if (user) {
+    console.log("User authenticated:", user);
+    // If the user is authenticated, you can show protected content or do something else
+  }
+});
 
   //---------------------------------
   // Signup Function
@@ -80,7 +88,7 @@
         console.log("Signed in successfully: ", user);
         alert("Logged in...");
         sessionStorage.setItem("user", user.email);
-        window.location.href = "./home.html";
+        window.location.href = "./index.html";
 
         // ...
       })
