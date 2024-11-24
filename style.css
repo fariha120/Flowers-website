@@ -16,6 +16,13 @@ h1 {
     color: #0c0101; 
 }
 
+.p {
+    color: #555;
+    text-align: left;
+    padding-left: 2px;
+    max-width: 600px;
+}
+
 .buttons-container button {
     background-color: black;
     color: rgb(245, 237, 237);
