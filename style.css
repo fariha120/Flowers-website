@@ -16,13 +16,6 @@ h1 {
     color: #0c0101; 
 }
 
-.p {
-    color: #555;
-    text-align: left;
-    padding-left: 2px;
-    max-width: 600px;
-}
-
 .buttons-container button {
     background-color: black;
     color: rgb(245, 237, 237);
@@ -42,14 +35,14 @@ h2 {
   }
   
   /* Paragraph styling */
-  .p {
-    color: #555;
-    line-height: 1.6;
-    font-size: 1em;
-    text-align: justify;
-    margin-bottom: 20px;
-  }
   
+   .p {
+    color: #555;
+    text-align: left; 
+    padding-left: 2px; 
+    max-width: 600px; 
+  }
+
   /* Gallery styling */
   #gallery {
     display: flex;
@@ -135,10 +128,12 @@ h2 {
   overflow: hidden;
   padding: 10px;
   transition: transform 0.2s ease;
+  filter: grayscale(100%);
 }
 
 .card:hover {
   transform: translateY(-5px);
+  filter: grayscale(0%);
 }
 
 .card img {
@@ -153,5 +148,3 @@ h2 {
   margin-top: 10px;
   color: #333;
 }
-
-
